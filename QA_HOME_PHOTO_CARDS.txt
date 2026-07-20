@@ -1,0 +1,2 @@
+Issues: 0
+All card assets, IDs and site.js syntax passed.

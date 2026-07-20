@@ -1,0 +1,6 @@
+ACADEMICS + CAMPUS MAP TOGGLE QA
+
+HTML pages checked: 12
+Issues found: 0
+
+All local links, assets, duplicate IDs and JavaScript syntax checks passed.

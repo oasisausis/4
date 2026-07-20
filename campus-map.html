@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Interactive IIT Bombay campus map and Physics Department layouts for incoming students." name="description"/>
+<meta content="#1a2238" name="theme-color"/>
+<title>Interactive Maps — IITB Physics Fresher Guide</title>
+<link href="./styles.css" rel="stylesheet"/>
+</head>
+<body class="physics-dashboard-page dashboard-subpage guide-page page-campus campus-map-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div aria-hidden="true" class="physics-sky subpage-physics-sky">
+<span class="formula f1">r⃗ = (x,y)</span>
+<span class="formula f2">δS = 0</span>
+<span class="formula f3">you are here →</span>
+<span class="formula f4">∇·E = ρ/ε₀</span>
+<svg class="wave-field" preserveaspectratio="none" viewbox="0 0 1200 220">
+<path d="M0,110 C100,20 200,200 300,110 S500,20 600,110 S800,200 900,110 S1100,20 1200,110"></path>
+<path d="M0,150 C120,70 220,215 350,120 S560,55 700,140 S980,60 1200,145"></path>
+</svg>
+</div>
+<nav aria-label="Primary navigation" class="dashboard-nav subpage-dashboard-nav">
+<a class="dashboard-brand" href="./index.html"><span aria-hidden="true" class="brand-orbit"><i></i></span><span><strong>IITB Physics</strong><small>Fresher Guide</small></span></a>
+<div class="dashboard-nav-links">
+<a href="./academics.html">Academics</a>
+<a aria-current="page" class="active" href="./campus-life.html">Campus</a>
+<a href="./seniors.html">Seniors</a>
+<a href="./clubs.html">Clubs</a>
+<a href="./transport.html">Getting here</a>
+</div>
+<div class="nav-utilities"><a class="resources-pill" href="./resources.html">▣ Resources</a><a class="emergency-pill" href="./emergency.html"><span>●</span> Emergency</a></div>
+</nav>
+<main class="dashboard-main dashboard-subpage-main campus-map-main" id="main">
+<section class="page-hero map-page-hero">
+<div class="subpage-card-topline"><span class="card-index">02A</span><span class="card-symbol">⌖</span></div>
+<div class="shell page-hero-grid map-hero-grid">
+<div class="reveal">
+<p class="kicker">Search · zoom · orient</p>
+<h1 class="page-title"><span aria-hidden="true" class="page-title-icon icon-cyan">🗺️</span>Interactive <em>maps.</em></h1>
+<p class="lede">This page combines the IIT Bombay institute map with the Physics Department floor layouts. Use the campus map to understand the bigger picture, then switch to the department layout when you need room-level orientation.</p>
+<div class="subpage-meta"><span>Institute map</span><span>Physics Department floors</span><span>Search + quick jumps</span></div>
+</div>
+<figure class="page-visual reveal map-hero-visual"><img alt="IIT Bombay campus map preview" src="./assets/iitb-campus-map.webp"/></figure>
+</div>
+</section>
+<section class="section">
+<div class="shell">
+<div class="tab-bar map-top-tabs" data-tabs=".map-panel">
+<button class="tab-button" data-tab="institute-map" type="button">🗺️ Institute map</button>
+<button class="tab-button" data-tab="department-layout" type="button">🏢 Physics Department</button>
+</div>
+<section class="map-panel active" id="institute-map"><div aria-label="Campus map style" class="map-mode-switch" role="tablist"><button aria-selected="true" class="map-mode-button active" data-map-mode="interactive" role="tab" type="button">✨ Interactive guide</button><button aria-selected="false" class="map-mode-button" data-map-mode="reference" role="tab" type="button">🧭 2D reference map</button></div><div class="map-mode-view active" data-map-view="interactive"><div class="map-shell">
+<aside aria-label="Map controls" class="map-sidebar">
+<div class="map-search-wrap">
+<label for="map-search">Find a place</label>
+<input autocomplete="off" id="map-search" placeholder="Physics, hospital, H13, SAC..." type="search"/>
+</div>
+<div aria-label="Filter locations" class="map-categories" role="group">
+<button class="map-chip active" data-map-filter="all" type="button">🧭 All</button>
+<button class="map-chip" data-map-filter="academic" type="button">🏫 Academic</button>
+<button class="map-chip" data-map-filter="hostel" type="button">🛏️ Hostels</button>
+<button class="map-chip" data-map-filter="food" type="button">🍽️ Food</button>
+<button class="map-chip" data-map-filter="service" type="button">🛠️ Services</button>
+<button class="map-chip" data-map-filter="gate" type="button">🚪 Gates</button>
+</div>
+<div class="map-results-head"><span>Quick locations</span><small id="map-result-count">0 shown</small></div>
+<div class="map-results" id="map-results"></div>
+<div class="map-help"><strong>How to use</strong><p>Drag to move. Scroll or pinch to zoom. Click a marker or quick location to focus it.</p></div>
+</aside>
+<div class="map-stage-wrap">
+<div aria-label="Map controls" class="map-toolbar">
+<button aria-label="Zoom in" id="map-zoom-in" type="button">+</button>
+<button aria-label="Zoom out" id="map-zoom-out" type="button">−</button>
+<button id="map-reset" type="button">Reset</button>
+<button id="map-fullscreen" type="button">Fullscreen</button>
+</div>
+<div aria-label="Interactive IIT Bombay campus map" class="map-viewport" id="map-viewport" tabindex="0">
+<div class="map-canvas" id="map-canvas">
+<img alt="Illustrated IIT Bombay campus map" src="./assets/iitb-campus-map.webp"/>
+<div class="map-markers" id="map-markers"></div>
+</div>
+</div>
+<div class="map-status"><span id="map-selection">Select a location to highlight it.</span><span id="map-zoom-label">100%</span></div>
+</div>
+</div></div><div class="map-mode-view" data-map-view="reference"><div class="reference-map-shell"><aside class="reference-map-sidebar"><p class="eyebrow">Printable reference</p><h2>🧭 IIT Bombay 2D map</h2><p>Use the numbered grid and the full location index when you want a clean reference map without markers or search overlays.</p><div class="reference-map-tips"><article><span aria-hidden="true">🔎</span><div><strong>Zoom in</strong><small>Read small building names and serial numbers.</small></div></article><article><span aria-hidden="true">✋</span><div><strong>Drag</strong><small>Move across the map and the location index.</small></div></article><article><span aria-hidden="true">⛶</span><div><strong>Fullscreen</strong><small>Best for phones and smaller laptop screens.</small></div></article></div></aside><div class="reference-map-viewer-wrap"><div class="map-toolbar reference-map-toolbar"><button aria-label="Zoom in" id="reference-zoom-in" type="button">+</button><button aria-label="Zoom out" id="reference-zoom-out" type="button">−</button><button aria-label="Reset map" id="reference-reset" type="button">Reset</button><button aria-label="Open map fullscreen" id="reference-fullscreen" type="button">Fullscreen</button></div><div aria-label="IIT Bombay 2D reference map" class="reference-map-viewport" id="reference-map-viewport" tabindex="0"><div class="reference-map-canvas" id="reference-map-canvas"><img alt="IIT Bombay 2D campus map with numbered location index" draggable="false" src="./assets/iitb-campus-map-2d.webp"/></div></div><div class="map-status"><span>2D grid map · complete location index</span><span id="reference-zoom-label">100%</span></div></div></div></div>
+</section>
+<section class="map-panel" id="department-layout">
+<div class="dept-shell panel">
+<div class="dept-sidebar">
+<p class="eyebrow">Physics Department</p>
+<h2><span aria-hidden="true" class="pop-icon icon-blue">🏢</span>Floor layouts</h2>
+<p class="dept-copy">These are the original clear Physics Department floor plans. Use the floor buttons to switch quickly, then zoom and drag to read room names more easily.</p>
+<div aria-label="Physics Department floors" class="dept-floor-tabs" role="tablist">
+<button aria-selected="true" class="dept-floor-tab active" data-floor="ground" role="tab" type="button">0️⃣ Ground floor</button>
+<button aria-selected="false" class="dept-floor-tab" data-floor="first" role="tab" type="button">1️⃣ First floor</button>
+<button aria-selected="false" class="dept-floor-tab" data-floor="second" role="tab" type="button">2️⃣ Second floor</button>
+<button aria-selected="false" class="dept-floor-tab" data-floor="third" role="tab" type="button">3️⃣ Third floor</button>
+</div>
+<div class="dept-meta" id="dept-meta"></div>
+<div class="dept-notes">
+<article><span>Tip</span><p>Use this for room-level orientation after you reach the department building.</p></article>
+<article><span>Note</span><p>Layouts come from the freshie booklet, so some rooms may shift over time.</p></article>
+</div>
+</div>
+<div class="dept-viewer-wrap">
+<div class="dept-toolbar">
+<button id="dept-zoom-in" type="button">+</button>
+<button id="dept-zoom-out" type="button">−</button>
+<button id="dept-reset" type="button">Reset</button>
+<button id="dept-fullscreen" type="button">Fullscreen</button>
+</div>
+<div aria-label="Physics Department floor viewer" class="dept-viewport" id="dept-viewport" tabindex="0">
+<div class="dept-canvas" id="dept-canvas">
+<img alt="Physics Department ground floor layout" id="dept-image" src="./assets/physics-ground-floor-original.jpg"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="map-note-grid">
+<article><span>01</span><div><strong>Use the institute map first</strong><p>It helps you understand where gates, hostels, academic zones and student spaces sit relative to one another.</p></div></article>
+<article><span>02</span><div><strong>Then switch to the department layout</strong><p>That is better when you need a particular lab, faculty room or facility inside Physics.</p></div></article>
+<article><span>03</span><div><strong>Keep expectations realistic</strong><p>Both map types are for orientation. Follow official signage and current instructions once you are on campus.</p></div></article>
+</section>
+</div>
+</section>
+</main>
+<footer class="dashboard-subpage-footer"><div class="dashboard-bottom subpage-bottom"><a class="bottom-note back-dashboard" href="./index.html"><span>⌂</span><p><strong>Back to the dashboard</strong><br/>Every major topic is one click away.</p></a><div aria-label="Guide links" class="subpage-footer-links"><a href="./academics.html">Academics</a><a href="./campus-life.html">Campus + maps</a><a href="./seniors.html">Seniors</a><a href="./clubs.html">Clubs</a><a href="./transport.html">Getting here</a><a href="./resources.html">Resources</a></div><p class="maker-credit">Made by <strong>Ayushi Singh</strong> · Department Coordinator · Batch of ’27</p></div></footer>
+<script src="./site.js"></script>
+<script>
+const locations = [
+  {id:'physics', name:'Physics Department', category:'academic', zone:'B4', x:57.8, y:70.1, note:'Physics Department and laboratories'},
+  {id:'lhc', name:'Lecture Hall Complex', category:'academic', zone:'B4', x:59.6, y:56.2, note:'Common lecture venue'},
+  {id:'library', name:'Central Library', category:'academic', zone:'B4', x:51.5, y:45.2, note:'Library and study space'},
+  {id:'sac', name:'SAC', category:'service', zone:'B3', x:48.5, y:38.5, note:'Student Activities Centre'},
+  {id:'hospital', name:'IITB Hospital', category:'service', zone:'B3', x:42.6, y:57.6, note:'Campus medical facility'},
+  {id:'h13', name:'Hostel 13', category:'hostel', zone:'A3', x:34.0, y:22.8, note:'Hostel 12–14 zone'},
+  {id:'h2', name:'Hostel 2', category:'hostel', zone:'C2', x:24.3, y:81.2, note:'Lakeside hostel zone'},
+  {id:'gulmohar', name:'Gulmohar', category:'food', zone:'B4', x:56.4, y:51.3, note:'Restaurant / canteen area'},
+  {id:'maddu', name:'Maddu', category:'food', zone:'B4', x:60.8, y:52.9, note:'Popular quick-eats zone'},
+  {id:'main-gate', name:'Main Gate', category:'gate', zone:'C2', x:31.8, y:93.1, note:'Primary campus entrance'},
+  {id:'yp-gate', name:'Y Point / Market Gate', category:'gate', zone:'C4', x:53.3, y:88.5, note:'Market-side gate'},
+  {id:'lake-gate', name:'Lake Side Gate', category:'gate', zone:'C1', x:13.2, y:82.0, note:'Lake-side entrance'},
+  {id:'kresit', name:'KReSIT', category:'academic', zone:'B4', x:48.1, y:61.6, note:'Kanwal Rekhi School of IT'},
+  {id:'main-building', name:'Main Building', category:'service', zone:'B4', x:50.6, y:47.7, note:'Main administrative building'},
+  {id:'gymkhana', name:'Gymkhana / Sports', category:'service', zone:'B4', x:47.5, y:33.2, note:'Sports and activity facilities'}
+];
+const floorData = {
+  ground: {title:'Ground floor', image:'./assets/physics-ground-floor-original.jpg', note:'Original department plan showing ESCA, AFM, Hall and X-ray labs, workshop, clean room and STAR Lab facilities.'},
+  first: {title:'First floor', image:'./assets/physics-first-floor-original.jpg', note:'Original department plan showing Electronics Lab, General Physics Lab, MAGIC Lab, Nuclear Physics Lab and related rooms.'},
+  second: {title:'Second floor', image:'./assets/physics-second-floor-original.jpg', note:'Original department plan showing faculty rooms, Faculty Lounge, Department Library, Computer Lab and Seminar Room.'},
+  third: {title:'Third floor', image:'./assets/physics-third-floor-original.jpg', note:'Original department plan showing nonlinear dynamics, ultrafast optics, clean room facility, EHEP and soft-matter lab spaces.'}
+};
+
+function initDraggableZoom(viewport, canvas, zoomLabel, onReset){
+  let scale = 1, tx = 0, ty = 0, dragging = false, start = {x:0,y:0}, origin = {x:0,y:0};
+  function apply(){
+    canvas.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+    if (zoomLabel) zoomLabel.textContent = `${Math.round(scale*100)}%`;
+  }
+  function clamp(v){ return Math.min(4, Math.max(.65, v)); }
+  function zoomAt(next, clientX, clientY){
+    const rect = viewport.getBoundingClientRect();
+    const x = clientX - rect.left, y = clientY - rect.top;
+    const old = scale; scale = clamp(next); const f = scale / old;
+    tx = x - (x - tx) * f; ty = y - (y - ty) * f; apply();
+  }
+  viewport.addEventListener('wheel', e => { e.preventDefault(); zoomAt(scale * (e.deltaY < 0 ? 1.12 : .89), e.clientX, e.clientY); }, {passive:false});
+  viewport.addEventListener('dblclick', e => zoomAt(scale * 1.35, e.clientX, e.clientY));
+  viewport.addEventListener('pointerdown', e => {
+    dragging = true; viewport.setPointerCapture(e.pointerId); start = {x:e.clientX,y:e.clientY}; origin = {x:tx,y:ty}; viewport.classList.add('dragging');
+  });
+  viewport.addEventListener('pointermove', e => { if(!dragging) return; tx = origin.x + e.clientX - start.x; ty = origin.y + e.clientY - start.y; apply(); });
+  function endDrag(e){ if (dragging && viewport.hasPointerCapture(e.pointerId)) viewport.releasePointerCapture(e.pointerId); dragging = false; viewport.classList.remove('dragging'); }
+  viewport.addEventListener('pointerup', endDrag); viewport.addEventListener('pointercancel', endDrag);
+  return {
+    zoomIn(){ const r=viewport.getBoundingClientRect(); zoomAt(scale*1.2, r.left+r.width/2, r.top+r.height/2); },
+    zoomOut(){ const r=viewport.getBoundingClientRect(); zoomAt(scale/1.2, r.left+r.width/2, r.top+r.height/2); },
+    reset(){ scale=1; tx=0; ty=0; apply(); if(onReset) onReset(); },
+    setView(nextScale,nextTx,nextTy){ scale=clamp(nextScale); tx=nextTx; ty=nextTy; apply(); },
+    apply
+  };
+}
+
+// Institute map
+const mapViewport = document.querySelector('#map-viewport');
+const mapCanvas = document.querySelector('#map-canvas');
+const markerLayer = document.querySelector('#map-markers');
+const resultList = document.querySelector('#map-results');
+const search = document.querySelector('#map-search');
+const count = document.querySelector('#map-result-count');
+const selection = document.querySelector('#map-selection');
+const zoomLabel = document.querySelector('#map-zoom-label');
+const chips = [...document.querySelectorAll('.map-chip')];
+let activeFilter = 'all';
+let selectedId = '';
+const mapControls = initDraggableZoom(mapViewport, mapCanvas, zoomLabel, () => { selectedId=''; selection.textContent='Select a location to highlight it.'; updateMarkers(); });
+function visibleLocations(){
+  const q = search.value.trim().toLowerCase();
+  return locations.filter(loc => (activeFilter==='all'||loc.category===activeFilter) && (!q || `${loc.name} ${loc.zone} ${loc.note}`.toLowerCase().includes(q)));
+}
+function focusLocation(loc){
+  selectedId = loc.id;
+  const rect = mapViewport.getBoundingClientRect();
+  const px = mapCanvas.offsetWidth * loc.x / 100;
+  const py = mapCanvas.offsetHeight * loc.y / 100;
+  const focusScale = 1.85;
+  const tx = rect.width / 2 - px * focusScale;
+  const ty = rect.height / 2 - py * focusScale;
+  mapControls.setView(focusScale, tx, ty);
+  selection.innerHTML = `<strong>${loc.name}</strong> · ${loc.zone} · ${loc.note}`;
+  updateMarkers();
+}
+function updateMarkers(){
+  const ids = new Set(visibleLocations().map(v => v.id));
+  [...markerLayer.children].forEach(marker => {
+    marker.hidden = !ids.has(marker.dataset.id);
+    marker.classList.toggle('selected', marker.dataset.id === selectedId);
+  });
+}
+function renderResults(){
+  const visible = visibleLocations();
+  count.textContent = `${visible.length} shown`;
+  resultList.innerHTML = '';
+  visible.forEach(loc => {
+    const btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'map-result'; btn.dataset.category = loc.category;
+    btn.innerHTML = `<span class="map-result-dot"></span><span><strong>${loc.name}</strong><small>${loc.zone} · ${loc.note}</small></span>`;
+    btn.addEventListener('click', () => focusLocation(loc));
+    resultList.appendChild(btn);
+  });
+  if (!visible.length) resultList.innerHTML = '<p class="map-empty">No matching location.</p>';
+  updateMarkers();
+}
+locations.forEach(loc => {
+  const marker = document.createElement('button');
+  marker.type='button'; marker.className='map-marker'; marker.dataset.id=loc.id; marker.dataset.category=loc.category;
+  marker.style.left = `${loc.x}%`; marker.style.top = `${loc.y}%`; marker.setAttribute('aria-label', loc.name);
+  marker.innerHTML = '<span></span><b>'+loc.name+'</b>';
+  marker.addEventListener('click', e => { e.stopPropagation(); focusLocation(loc); });
+  markerLayer.appendChild(marker);
+});
+chips.forEach(chip => chip.addEventListener('click', () => { activeFilter = chip.dataset.mapFilter; chips.forEach(c => c.classList.toggle('active', c===chip)); renderResults(); }));
+search.addEventListener('input', renderResults);
+document.querySelector('#map-zoom-in').addEventListener('click', () => mapControls.zoomIn());
+document.querySelector('#map-zoom-out').addEventListener('click', () => mapControls.zoomOut());
+document.querySelector('#map-reset').addEventListener('click', () => mapControls.reset());
+document.querySelector('#map-fullscreen').addEventListener('click', async () => { const el=document.querySelector('.map-stage-wrap'); if(!document.fullscreenElement) await el.requestFullscreen(); else await document.exitFullscreen(); });
+renderResults();
+
+mapControls.apply();
+
+// Campus map mode toggle: interactive guide / 2D reference map.
+const mapModeButtons = [...document.querySelectorAll('[data-map-mode]')];
+const mapModeViews = [...document.querySelectorAll('[data-map-view]')];
+const referenceViewport = document.querySelector('#reference-map-viewport');
+const referenceCanvas = document.querySelector('#reference-map-canvas');
+const referenceZoomLabel = document.querySelector('#reference-zoom-label');
+const referenceControls = referenceViewport && referenceCanvas
+  ? initDraggableZoom(referenceViewport, referenceCanvas, referenceZoomLabel, null)
+  : null;
+
+function setMapMode(mode){
+  mapModeButtons.forEach(button => {
+    const active = button.dataset.mapMode === mode;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-selected', String(active));
+  });
+  mapModeViews.forEach(view => {
+    view.classList.toggle('active', view.dataset.mapView === mode);
+  });
+
+  // Re-apply transforms after the hidden view becomes visible.
+  window.requestAnimationFrame(() => {
+    if (mode === 'interactive') mapControls.apply();
+    if (mode === 'reference') referenceControls?.apply();
+  });
+}
+
+mapModeButtons.forEach(button => {
+  button.addEventListener('click', () => setMapMode(button.dataset.mapMode));
+});
+
+document.querySelector('#reference-zoom-in')?.addEventListener('click', () => referenceControls?.zoomIn());
+document.querySelector('#reference-zoom-out')?.addEventListener('click', () => referenceControls?.zoomOut());
+document.querySelector('#reference-reset')?.addEventListener('click', () => referenceControls?.reset());
+document.querySelector('#reference-fullscreen')?.addEventListener('click', async () => {
+  const element = document.querySelector('.reference-map-viewer-wrap');
+  if (!element) return;
+  if (!document.fullscreenElement) await element.requestFullscreen();
+  else await document.exitFullscreen();
+});
+referenceControls?.apply();
+setMapMode('interactive');
+
+
+// Department layout
+const deptTabs = [...document.querySelectorAll('.dept-floor-tab')];
+const deptMeta = document.querySelector('#dept-meta');
+const deptImage = document.querySelector('#dept-image');
+const deptCanvas = document.querySelector('#dept-canvas');
+const deptViewport = document.querySelector('#dept-viewport');
+const deptControls = initDraggableZoom(deptViewport, deptCanvas, null, null);
+function setFloor(id){
+  const data = floorData[id]; if(!data) return;
+  deptTabs.forEach(tab => { const active = tab.dataset.floor === id; tab.classList.toggle('active', active); tab.setAttribute('aria-selected', String(active)); });
+  deptImage.src = data.image; deptImage.alt = `Physics Department ${data.title.toLowerCase()} layout`;
+  deptMeta.innerHTML = `<strong>${data.title}</strong><p>${data.note}</p>`;
+  deptControls.reset();
+}
+deptTabs.forEach(tab => tab.addEventListener('click', () => setFloor(tab.dataset.floor)));
+document.querySelector('#dept-zoom-in').addEventListener('click', () => deptControls.zoomIn());
+document.querySelector('#dept-zoom-out').addEventListener('click', () => deptControls.zoomOut());
+document.querySelector('#dept-reset').addEventListener('click', () => deptControls.reset());
+document.querySelector('#dept-fullscreen').addEventListener('click', async () => { const el=document.querySelector('.dept-viewer-wrap'); if(!document.fullscreenElement) await el.requestFullscreen(); else await document.exitFullscreen(); });
+setFloor('ground');
+</script>
+</body>
+</html>

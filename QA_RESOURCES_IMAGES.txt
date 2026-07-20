@@ -1,0 +1,7 @@
+RESOURCES + IMAGES WEBSITE QA
+
+HTML pages checked: 13
+PDF files checked: 5
+Issues found: 0
+
+All local links, assets, duplicate IDs, PDFs and JavaScript syntax checks passed.

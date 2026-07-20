@@ -1,0 +1,2 @@
+Basic local-file check passed after accounting for cache-busting query strings: no missing local file references found in HTML files.
+Department floor viewer updated to use the original uploaded ground, first, second and third floor plan images.

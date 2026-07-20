@@ -1,0 +1,4 @@
+IMPORTANT VIDEO RESOURCE QA
+
+Issues found: 0
+Local links, duplicate IDs and JavaScript syntax checks passed.

@@ -1,0 +1,7 @@
+EMAIL LOGIN VIDEO UPDATE QA
+
+- resources-data.js title updated
+- description updated
+- metadata updated
+- cache-safe thumbnail filename added
+- Google Drive URL unchanged
